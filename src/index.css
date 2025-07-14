@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+.active{
+  @apply focus:text-green-600 hover:text-green-700 transition-all duration-300
+}
+
+.slick-dots li button:before {
+  font-size: 13px !important;
+  color: #D6D6D6 !important; 
+}
+
+
+.slick-dots li.slick-active button:before {
+  color: #869791 !important;      
+}
