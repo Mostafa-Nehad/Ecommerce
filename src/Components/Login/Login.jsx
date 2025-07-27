@@ -25,7 +25,7 @@ export default function Login() {
       if(response.data.message === 'success'){
       setuserLogin(response?.data?.token);
       localStorage.setItem("usertoken", response?.data?.token);
-      navigate("/");
+      window.location.href = "/";
     }
 
 

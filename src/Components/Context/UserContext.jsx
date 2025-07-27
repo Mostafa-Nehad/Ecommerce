@@ -1,22 +1,23 @@
 import { useState, createContext, useEffect } from "react";
 
-export let UserContext =createContext(0)
+export const UserContext = createContext({
+  userLogin: null,
+  setuserLogin: () => {},
+});
 
-export default function UserContextProvider(props) {
+export default function UserContextProvider({ children }) {
+  const [userLogin, setuserLogin] = useState(null);
 
-    const [userLogin, setuserLogin] = useState(null)
-
-    useEffect(() => {
-      if(localStorage.getItem('usertoken') !== null){
-        setuserLogin(localStorage.getItem('usertoken'));
-      }
-    }, [])
-
-
+  useEffect(() => {
+    const token = localStorage.getItem("usertoken");
+    if (token) {
+      setuserLogin(token);
+    }
+  }, []);
 
   return (
-    <UserContext.Provider value={{userLogin, setuserLogin}}>
-      {props.children}
+    <UserContext.Provider value={{ userLogin, setuserLogin }}>
+      {children}
     </UserContext.Provider>
   );
 }
